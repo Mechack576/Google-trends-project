@@ -67,6 +67,8 @@ func main() {
 
 }
 
+// go and pull the xml from the google trends website
+// and return the response
 func getGoogleTrends() *http.Response {
 	resp, err := http.Get("https://trends.google.com/trends/trendingsearches/daily/rss?geo=US")
 
@@ -77,6 +79,7 @@ func getGoogleTrends() *http.Response {
 	return resp
 }
 
+// read the http.response and convert it into a []byte
 func readGoogleTrends() []byte {
 	resp := getGoogleTrends()
 	data, err := ioutil.ReadAll(resp.Body)
